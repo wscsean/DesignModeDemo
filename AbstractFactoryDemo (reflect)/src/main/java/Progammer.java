@@ -7,7 +7,7 @@ public class Progammer
 {
     public static void main(String[] args)
     {
-        Scanner input =new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         String className = input.nextLine();
 
         // input: Factory.No5Factory
