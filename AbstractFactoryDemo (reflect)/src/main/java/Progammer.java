@@ -1,27 +1,38 @@
 import UI.*;
 import Core.*;
 import Factory.*;
+import java.util.Scanner;
 
 public class Progammer
 {
     public static void main(String[] args)
     {
-        Factory no5Factory = new No5Factory();
+        Scanner input =new Scanner(System.in);
+        String className = input.nextLine();
 
-        Core no5Core = no5Factory.developGameCore();
-        UI no5UI = no5Factory.developGameUI();
+        // input: Factory.No5Factory
 
-        no5Core.printCoreInfo();
-        no5UI.printUiInfo();
+        try
+        {
+            Factory factory = (Factory) Class.forName(className).newInstance();
 
+            Core core = factory.developGameCore();
+            UI ui = factory.developGameUI();
 
-        Factory honorFactory = new HonorFactory();
-
-        Core honorCore = honorFactory.developGameCore();
-        UI honorUI = honorFactory.developGameUI();
-
-        honorCore.printCoreInfo();
-        honorUI.printUiInfo();
-
+            core.printCoreInfo();
+            ui.printUiInfo();
+        }
+        catch (InstantiationException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IllegalAccessException e)
+        {
+            e.printStackTrace();
+        }
+        catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
